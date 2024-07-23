@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .clock-widget {
+            font-size: 2em;
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #000;
+        }
+
+        .morning {
+            background-color: #FFD700; /* Gold */
+        }
+
+        .afternoon {
+            background-color: #87CEEB; /* SkyBlue */
+        }
+
+        .evening {
+            background-color: #FF6347; /* Tomato */
+        }
+
+        .night {
+            background-color: #2F4F4F; /* DarkSlateGray */
+        }
+    </style>
+</head>
+<body>
+    <div id="clock" class="clock-widget"></div>
+
+    <script>
+        function updateClock() {
+            var now = new Date();
+            var hours = now.getHours();
+            var clockElement = document.getElementById('clock');
+            
+            if (hours >= 6 && hours < 12) {
+                clockElement.className = 'clock-widget morning';
+                clockElement.innerHTML = now.toLocaleTimeString() + ' - Good Morning';
+            } else if (hours >= 12 && hours < 18) {
+                clockElement.className = 'clock-widget afternoon';
+                clockElement.innerHTML = now.toLocaleTimeString() + ' - Good Afternoon';
+            } else if (hours >= 18 && hours < 21) {
+                clockElement.className = 'clock-widget evening';
+                clockElement.innerHTML = now.toLocaleTimeString() + ' - Good Evening';
+            } else {
+                clockElement.className = 'clock-widget night';
+                clockElement.innerHTML = now.toLocaleTimeString() + ' - Good Night';
+            }
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html>
